@@ -17,10 +17,11 @@ import numpy as np
 data = None
 
 # YOUR CODE HERE 1
- #Read the data File and skip rows 2
-data = pd.read_csv('data/1091402.txt',skiprows=2)
- #convert no-data
-na_values=-9999
+
+ #Read the data File / skip rows 2 / convert nulldata/ split with whitespace
+data = pd.read_csv('data/1091402.txt',skiprows=[1],na_values=-9999,delim_whitespace=True)
+
+
 # ### Part 2 
 # 
 # In this section, you will calculate simple statistics based on the input data:
@@ -30,7 +31,10 @@ na_values=-9999
 
 tavg_nodata_count = None
 #YOUR CODE HERE 2
-
+#variable "s" is the data of line TAVG
+s=data['TAVG']
+#count the number of null functions
+tavg_nodata_count = s.isnull().sum()
 
 #CAUTION!!! DON'T EDIT THIS PART START
 # Print out the solution:
@@ -43,6 +47,10 @@ print('Number of no-data values in column "TAVG":',tavg_nodata_count)
 
 tmin_nodata_count = None
 #YOUR CODE HERE 3
+#variable "t" is the data of line TAVG
+t=data['TMIN']
+#count the number of null functions
+tmin_nodata_count = t.isnull().sum()
 
 #CAUTION!!! DON'T EDIT THIS PART START
 # Print out the solution:
