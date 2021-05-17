@@ -31,9 +31,9 @@ data = pd.read_csv('data/1091402.txt',skiprows=[1],na_values=-9999,delim_whitesp
 
 tavg_nodata_count = None
 #YOUR CODE HERE 2
-#variable "s" is the data of line TAVG
+ #variable "s" is the data of line TAVG
 s=data['TAVG']
-#count the number of null functions
+ #count the number of null functions
 tavg_nodata_count = s.isnull().sum()
 
 #CAUTION!!! DON'T EDIT THIS PART START
@@ -47,9 +47,9 @@ print('Number of no-data values in column "TAVG":',tavg_nodata_count)
 
 tmin_nodata_count = None
 #YOUR CODE HERE 3
-#variable "t" is the data of line TAVG
+ #variable "t" is the data of line TAVG
 t=data['TMIN']
-#count the number of null functions
+ #count the number of null functions
 tmin_nodata_count = t.isnull().sum()
 
 #CAUTION!!! DON'T EDIT THIS PART START
@@ -63,6 +63,10 @@ print('Number of no-data values in column "TMIN":', tmin_nodata_count)
 
 day_count = None 
 #YOUR CODE HERE 4
+ #variable "u" is the data of line 'DATE'
+u=data['DATE']
+ #count the number of days
+day_count=u.count()
 
 #CAUTION!!! DON'T EDIT THIS PART START
 # Print out the solution:
@@ -76,6 +80,8 @@ print("Number of days:", day_count)
 first_obs = None
  
 # YOUR CODE HERE 5
+ #Find the oldest observation
+first_obs = data['DATE'][0]
 
 #CAUTION!!! DON'T EDIT THIS PART START
 # Print out the solution:
@@ -88,6 +94,8 @@ print('Date of the first observation:',first_obs)
 last_obs = None
 
 # YOUR CODE HERE 6
+ #Find the recent observation
+last_obs = data['DATE'][len(data['DATE'])-1]
 
 #CAUTION!!! DON'T EDIT THIS PART START
 # Print out the solution:
@@ -101,6 +109,8 @@ print('Date of the last observation:', last_obs)
 avg_temp = None
 
 # YOUR CODE HERE 7
+ #calculate average temp
+avg_temp = np.average(data['TAVG'])
 
 #CAUTION!!! DON'T EDIT THIS PART START
 # Print out the solution:
