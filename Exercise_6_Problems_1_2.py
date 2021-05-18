@@ -110,7 +110,7 @@ avg_temp = None
 
 # YOUR CODE HERE 7
  #calculate average temp
-avg_temp = np.average(data['TAVG'])
+avg_temp = s.sum()/(len(data['TAVG'])-tavg_nodata_count)
 
 #CAUTION!!! DON'T EDIT THIS PART START
 # Print out the solution:
@@ -124,6 +124,19 @@ print('Average temperature (F) for the whole dataset:', round(avg_temp, 2))
 avg_temp_1969 = None
 
 # YOUR CODE HERE 8
+#"data_count" is the variable of dates in summer
+data_count = 0
+#"sum" is sum of `TMAX` temperature over the Summer of 1969 (months May, June, July, and August of the year 1969)
+sum = 0
+# count the sum of temprature and data_count
+for i in range(len(data['TMAX'])-1):
+  if(data['DATE'][i]>=19690501):
+    if(data['DATE'][i]<=19690831):
+      if(np.isnan(data['DATE'][i])==False):
+        sum += data['TMAX'][i]
+        data_count+=1  
+#calcurate average of temp
+avg_temp_1969 = sum/data_count
 
 #CAUTION!!! DON'T EDIT THIS PART START
 # This test print should print a number
