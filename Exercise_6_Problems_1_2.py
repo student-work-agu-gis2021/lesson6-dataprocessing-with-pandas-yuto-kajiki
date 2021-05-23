@@ -154,7 +154,7 @@ month=[] #month in data['DATE'] 1~12
 celtem=[] #temp_celsius in data['TAVG']
 for i in range(len(data['DATE'])-1):
   month.append(int(data['DATE'][i]%10000/100))
-  celtem.append(data['TAVG'][i]-32)
+  celtem.append((data['TAVG'][i]-32)/1.8)
 #calcurate monthly temp average
 monthly_average = []
 total_temp=0
@@ -174,6 +174,8 @@ for i in range(len(data['DATE'])-1): #see all celtem
 
 monthly_average.append(total_temp/days_count)  #append last month (2017/Oct)  
 monthly_data=pd.DataFrame({'temp_celsius':monthly_average})
+
+
 
 #CAUTION!!! DON'T EDIT THIS PART START
 # This test print should print the length of variable monthly_data
