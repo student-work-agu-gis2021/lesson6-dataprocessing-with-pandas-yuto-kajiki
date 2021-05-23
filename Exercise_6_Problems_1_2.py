@@ -150,6 +150,30 @@ print('Average temperature (F) for the Summer of 69:', round(avg_temp_1969, 2))
 monthly_data = None
 
 # YOUR CODE HERE 9
+month=[] #month in data['DATE'] 1~12
+celtem=[] #temp_celsius in data['TAVG']
+for i in range(len(data['DATE'])-1):
+  month.append(int(data['DATE'][i]%10000/100))
+  celtem.append(data['TAVG'][i]-32)
+#calcurate monthly temp average
+monthly_average = []
+total_temp=0
+days_count=0 #We must count the number of monthly data, because there might be null data.
+for i in range(len(data['DATE'])-1): #see all celtem
+  if(i==0): #first day
+    total_temp+=celtem[i]
+    days_count+=1
+  else:
+    if(month[i] != month[i-1]): #when the month changed
+      monthly_average.append(total_temp/days_count) #append the average of celtem
+      total_temp=celtem[i] #reset the total and plus
+      days_count=1 #reset the count and plus
+    else:
+      total_temp += celtem[i]
+      days_count +=1
+
+monthly_average.append(total_temp/days_count)  #append last month (2017/Oct)  
+monthly_data=pd.DataFrame({'temp_celsius':monthly_average})
 
 #CAUTION!!! DON'T EDIT THIS PART START
 # This test print should print the length of variable monthly_data
